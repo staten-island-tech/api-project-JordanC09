@@ -1,8 +1,6 @@
 import "./style.css";
 //JUST GIVE ME MY API
 
-let data = [];
-
 async function getData() {
   try {
     // returns a promise
@@ -12,7 +10,7 @@ async function getData() {
       throw new Error(response);
     } else {
       //convert promise to json
-      data = await response.json();
+      let data = await response.json();
       console.log(data);
       //this is unique to THIS API!!!!!!!!!!
       data.forEach((country) => console.log(country.name));
@@ -23,5 +21,3 @@ async function getData() {
 }
 
 getData();
-
-console.log(data.country.name[1]);
