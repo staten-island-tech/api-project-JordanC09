@@ -18,7 +18,7 @@ async function getData() {
       data = await response.json();
       console.log(data);
       //this is unique to THIS API!!!!!!!!!!
-      data.forEach((country) => console.log(country.name));
+      data.forEach((country) => console.log(country.name.common));
     }
   } catch (error) {
     alert("hey I could not find that agent unc");
@@ -38,21 +38,17 @@ async function bruh() {
       data = await response.json();
       console.log(data);
       //this is unique to THIS API!!!!!!!!!!
-      data.forEach((country) => {
-        if (country.name.common === "Grenada") {
-          console.log("uygfdjhsad");
+      let randomnumber = Math.floor(Math.random() * 251);
+
+      console.log(randomnumber);
+      for (i = 0; i <= 100000; i++) {
+        if (i == randomnumber) {
+          console.log(data.name.common);
         }
-      });
+      }
     }
   } catch (error) {
     alert("hey I could not find that agent unc");
   }
 }
 bruh();
-// data.forEach((country) => console.log(country.name));
-
-// data.forEach((country) => {
-//   if (country.name === "Grenada") {
-//     console.log("jhgadjhfgdsjhgf");
-//   }
-// });
