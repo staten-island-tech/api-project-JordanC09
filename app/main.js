@@ -41,9 +41,10 @@ async function bruh() {
       let randomnumber = Math.floor(Math.random() * 251);
 
       console.log(randomnumber);
-      for (i = 0; i <= 100000; i++) {
-        if (i == randomnumber) {
-          console.log(data.name.common);
+      for (let i = 0; i <= 251; i++) {
+        if (randomnumber === i) {
+          console.log("HUGHIH");
+          break;
         }
       }
     }
