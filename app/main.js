@@ -302,3 +302,5 @@ while (true) {
 
 //console.log("button list below");
 //console.log(DOMSelectors.buttons);
+
+//use filter instead of plus one to make sure buttons arent the saME
