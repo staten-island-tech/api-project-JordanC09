@@ -58,12 +58,13 @@ async function generatequestion() {
 
       if (firstone.amiiboSeries === guy.amiiboSeries) {
         console.log("running");
-        while (firstone.amiiboSeries === guy.amiiboSeries) {
-          randombad = randombad + 1;
-          firstone = data.amiibo[randombad];
-        }
-        console.log(firstone.amiiboSeries);
-        console.log("after if");
+        data.amiibo.filter((amiibo) => {});
+        // while (firstone.amiiboSeries === guy.amiiboSeries) {
+        //   randombad = randombad + 1;
+        //   firstone = data.amiibo[randombad];
+        // }
+        // console.log(firstone.amiiboSeries);
+        // console.log("after if");
       }
 
       DOMSelectors.container.insertAdjacentHTML(
