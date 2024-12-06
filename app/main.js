@@ -58,7 +58,11 @@ async function generatequestion() {
 
       if (firstone.amiiboSeries === guy.amiiboSeries) {
         console.log("running");
-        data.amiibo.filter((amiibo) => {});
+        let possible = [];
+        data.amiibo.filter((amiibo) => {
+          if (amiibo.amiiboSeries !== guy.amiiboSeries) {
+          }
+        });
         // while (firstone.amiiboSeries === guy.amiiboSeries) {
         //   randombad = randombad + 1;
         //   firstone = data.amiibo[randombad];
