@@ -59,10 +59,13 @@ async function generatequestion() {
       if (firstone.amiiboSeries === guy.amiiboSeries) {
         console.log("running");
         let possible = [];
-        data.amiibo.filter((amiibo) => {
+        data.amiibo.forEach((amiibo) => {
           if (amiibo.amiiboSeries !== guy.amiiboSeries) {
+            possible.push(amiibo);
           }
+        
         });
+        console.log(possible);
         // while (firstone.amiiboSeries === guy.amiiboSeries) {
         //   randombad = randombad + 1;
         //   firstone = data.amiibo[randombad];
@@ -103,41 +106,51 @@ async function generatequestion() {
       if (
         secondone.amiiboSeries === guy.amiiboSeries ||
         secondone.amiiboSeries === firstone.amiiboSeries
-      ) {
-        console.log("running");
-        if (secondone.amiiboSeries === guy.amiiboSeries) {
-          while (secondone.amiiboSeries === guy.amiiboSeries) {
-            randombad2 = randombad2 + 1;
-            secondone = data.amiibo[randombad2];
+      ){
+        console.log("running2");
+        let possible2 = [];
+        data.amiibo.forEach((amiibo) => {
+          if (amiibo.amiiboSeries !== guy.amiiboSeries) {
+            possible2.push(amiibo);
           }
-          if (secondone.amiiboSeries === firstone.amiiboSeries) {
-            while (
-              secondone.amiiboSeries === firstone.amiiboSeries ||
-              secondone.amiiboSeries === guy.amiiboSeries
-            ) {
-              randombad2 = randombad2 + 1;
-              secondone = data.amiibo[randombad2];
-            }
-          }
-        }
-        if (secondone.amiiboSeries === firstone.amiiboSeries) {
-          while (secondone.amiiboSeries === firstone.amiiboSeries) {
-            randombad2 = randombad2 + 1;
-            secondone = data.amiibo[randombad2];
-          }
-          if (secondone.amiiboSeries === guy.amiiboSeries) {
-            while (
-              secondone.amiiboSeries === firstone.amiiboSeries ||
-              secondone.amiiboSeries === guy.amiiboSeries
-            ) {
-              randombad2 = randombad2 + 1;
-              secondone = data.amiibo[randombad2];
-            }
-          }
-        }
-        console.log(secondone.amiiboSeries);
-        console.log("after if");
+        
+        });
+        console.log(possible2);
       }
+      //   console.log("running");
+      //   if (secondone.amiiboSeries === guy.amiiboSeries) {
+      //     while (secondone.amiiboSeries === guy.amiiboSeries) {
+      //       randombad2 = randombad2 + 1;
+      //       secondone = data.amiibo[randombad2];
+      //     }
+      //     if (secondone.amiiboSeries === firstone.amiiboSeries) {
+      //       while (
+      //         secondone.amiiboSeries === firstone.amiiboSeries ||
+      //         secondone.amiiboSeries === guy.amiiboSeries
+      //       ) {
+      //         randombad2 = randombad2 + 1;
+      //         secondone = data.amiibo[randombad2];
+      //       }
+      //     }
+      //   }
+      //   if (secondone.amiiboSeries === firstone.amiiboSeries) {
+      //     while (secondone.amiiboSeries === firstone.amiiboSeries) {
+      //       randombad2 = randombad2 + 1;
+      //       secondone = data.amiibo[randombad2];
+      //     }
+      //     if (secondone.amiiboSeries === guy.amiiboSeries) {
+      //       while (
+      //         secondone.amiiboSeries === firstone.amiiboSeries ||
+      //         secondone.amiiboSeries === guy.amiiboSeries
+      //       ) {
+      //         randombad2 = randombad2 + 1;
+      //         secondone = data.amiibo[randombad2];
+      //       }
+      //     }
+      //   }
+      //   console.log(secondone.amiiboSeries);
+      //   console.log("after if");
+      // }
 
       DOMSelectors.container.insertAdjacentHTML(
         "beforeEnd",
@@ -173,26 +186,35 @@ async function generatequestion() {
         thirdone.amiiboSeries === secondone.amiiboSeries ||
         thirdone.amiiboSeries === firstone.amiiboSeries
       ) {
-        console.log("running3");
-        while (
-          thirdone.amiiboSeries === guy.amiiboSeries ||
-          thirdone.amiiboSeries === secondone.amiiboSeries ||
-          thirdone.amiiboSeries === firstone.amiiboSeries
-        ) {
-          randombad3 = randombad3 + 1;
-          thirdone = data.amiibo[randombad3];
-        }
-        // while (thirdone.amiiboSeries === secondone.amiiboSeries) {
-        //   randombad3 = randombad3 + 1;
-        //   thirdone = data.amiibo[randombad3];
-        // }
-        // while (thirdone.amiiboSeries === firstone.amiiboSeries) {
-        //   randombad3 = randombad3 + 1;
-        //   thirdone = data.amiibo[randombad3];
-        // }
-        console.log(thirdone.amiiboSeries);
-        console.log("after if");
+        let possible3 = [];
+        data.amiibo.forEach((amiibo) => {
+          if (amiibo.amiiboSeries !== guy.amiiboSeries) {
+            possible3.push(amiibo);
+          }
+        
+        });
+        console.log(possible3);
       }
+      //   console.log("running3");
+      //   while (
+      //     thirdone.amiiboSeries === guy.amiiboSeries ||
+      //     thirdone.amiiboSeries === secondone.amiiboSeries ||
+      //     thirdone.amiiboSeries === firstone.amiiboSeries
+      //   ) {
+      //     randombad3 = randombad3 + 1;
+      //     thirdone = data.amiibo[randombad3];
+      //   }
+      //   // while (thirdone.amiiboSeries === secondone.amiiboSeries) {
+      //   //   randombad3 = randombad3 + 1;
+      //   //   thirdone = data.amiibo[randombad3];
+      //   // }
+      //   // while (thirdone.amiiboSeries === firstone.amiiboSeries) {
+      //   //   randombad3 = randombad3 + 1;
+      //   //   thirdone = data.amiibo[randombad3];
+      //   // }
+      //   console.log(thirdone.amiiboSeries);
+      //   console.log("after if");
+      // }
 
       DOMSelectors.container.insertAdjacentHTML(
         "beforeEnd",
@@ -220,59 +242,59 @@ async function generatequestion() {
       DOMSelectors.buttons = document.querySelectorAll("button");
       console.log("Button list below");
       console.log(DOMSelectors.buttons);
-      while (true) {
-        DOMSelectors.buttons.forEach((button) => {
-          button.addEventListener("click", function () {
-            console.log("Le Button unt clicked!");
-            let clickvalue = button.value;
+      // while (true) {
+      //   DOMSelectors.buttons.forEach((button) => {
+      //     button.addEventListener("click", function () {
+      //       console.log("Le Button unt clicked!");
+      //       let clickvalue = button.value;
 
-            if (clickvalue === guy.amiiboSeries) {
-              DOMSelectors.container.innerHTML = "";
-              DOMSelectors.container.insertAdjacentHTML(
-                "beforeEnd",
-                `
-              <div class = "temp">
-                <h2>CORRECT!</h2>
+      //       if (clickvalue === guy.amiiboSeries) {
+      //         DOMSelectors.container.innerHTML = "";
+      //         DOMSelectors.container.insertAdjacentHTML(
+      //           "beforeEnd",
+      //           `
+      //         <div class = "temp">
+      //           <h2>CORRECT!</h2>
               
-              </div>
+      //         </div>
       
-              `
-              );
-              setTimeout(() => {
-                DOMSelectors.container.insertAdjacentHTML(
-                  "beforeEnd",
-                  `
-                  <button class="btn btn-outline btn-primary" id = "again">Another Question?</button>
-                  `
-                );
-              }, 2500);
-              // console.log("Correct");
-            } else {
-              console.log("Doofus!");
-              DOMSelectors.container.innerHTML = "";
-              DOMSelectors.container.insertAdjacentHTML(
-                "beforeEnd",
-                `
-              <div class = "temp">
-                <h2>You utter BAFOON! It is a multiple choice question about silly little statues how in the name of all that is good in this world were you unable to use your brain to conjour up the simplest of answer! FOR SHAME!</h2>
+      //         `
+      //         );
+      //         setTimeout(() => {
+      //           DOMSelectors.container.insertAdjacentHTML(
+      //             "beforeEnd",
+      //             `
+      //             <button class="btn btn-outline btn-primary" id = "again">Another Question?</button>
+      //             `
+      //           );
+      //         }, 2500);
+      //         // console.log("Correct");
+      //       } else {
+      //         console.log("Doofus!");
+      //         DOMSelectors.container.innerHTML = "";
+      //         DOMSelectors.container.insertAdjacentHTML(
+      //           "beforeEnd",
+      //           `
+      //         <div class = "temp">
+      //           <h2>You utter BAFOON! It is a multiple choice question about silly little statues how in the name of all that is good in this world were you unable to use your brain to conjour up the simplest of answer! FOR SHAME!</h2>
               
-              </div>
+      //         </div>
       
-              `
-              );
-              setTimeout(() => {
-                DOMSelectors.container.insertAdjacentHTML(
-                  "beforeEnd",
-                  `
-                  <button class="btn btn-outline btn-primary" id = "again">Get Your Aura Back?</button>
-                  `
-                );
-              }, 2500);
-              console.log("Correct");
-            }
-          });
-        });
-      }
+      //         `
+      //         );
+      //         setTimeout(() => {
+      //           DOMSelectors.container.insertAdjacentHTML(
+      //             "beforeEnd",
+      //             `
+      //             <button class="btn btn-outline btn-primary" id = "again">Get Your Aura Back?</button>
+      //             `
+      //           );
+      //         }, 2500);
+      //         console.log("Correct");
+      //       }
+      //     });
+      //   });
+      // }
     }
   } catch (error) {
     alert("hey I could not find that agent unc");
@@ -301,9 +323,9 @@ async function clickandcheck() {
 // if yes then yay you got it right
 // if no then you suck
 // regenerate questions
-while (true) {
-  await generatequestion();
-}
+
+generatequestion();
+
 
 //console.log("button list below");
 //console.log(DOMSelectors.buttons);
