@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
 html,body,*{
     font-size: 16px;
     padding: 0;
@@ -14,8 +16,26 @@ body{
     text-align: center;
     align-items: center;
     transition: all 3s;
+    
+    justify-content: center;
 }
 
 h1{
     font-size: 60px;
+}
+
+.image-cont{
+    align-items: center;
+    text-align: center;
+    align-items: center;
+    transition: all 3s;
+    display: flex;
+    justify-content: center;
+    height: 75%;
+    width: auto;
+}
+
+image{
+    height: 75px;
+    width: auto;
 }

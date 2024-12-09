@@ -1,6 +1,6 @@
 import "./style.css";
 //JUST GIVE ME MY API
-
+let rego;
 const DOMSelectors = {
   container: document.querySelector(".flex-auto"),
 };
@@ -29,7 +29,7 @@ async function generatequestion() {
       DOMSelectors.container.insertAdjacentHTML(
         "beforeEnd",
         `
-        <div>
+        <div class = "image-cont">
           <img src = "${guy.image}" class = "card-image" alt = "amiibo">
         </div>
 
@@ -297,6 +297,8 @@ async function clickandcheck() {
                 <button class="btn btn-outline btn-primary" id = "again">Another Question?</button>
                 `
               );
+              rego = document.getElementById("again");
+              waitforclick();  
             }, 2500);
             console.log("Correct");
           } else {
@@ -319,11 +321,17 @@ async function clickandcheck() {
                 <button class="btn btn-outline btn-primary" id = "again">Get Your Aura Back?</button>
                 `
               );
+              rego = document.getElementById("again");
+              waitforclick();  
             }, 2500);
             console.log("Correct");
           }
+          
         });
+        
       });
+      
+      
       
 
 
@@ -341,21 +349,47 @@ async function clickandcheck() {
 // regenerate questions
 
 
-await clickandcheck();
-console.log("after");
-let rego = document.getElementById("again");
-console.log(rego);
-if (rego){
-  rego = document.getElementById("again");
-  while(true){
-    console.log("bpom");
+function waitforclick() {
+  if (rego) {
     rego.addEventListener("click", function () {
-      console.log("addeventlistener");
-      answer = [""];
-      clickandcheck();
+      console.log("rego");
+      answer = [];  
+      rego.remove();
+      document.querySelector(".temp").remove();
+      stuffhappen();
+      
     });
+  } else {
+    
+    setTimeout(waitforclick, 100);  
   }
 }
+
+async function stuffhappen() {
+  await clickandcheck();
+  
+}
+
+stuffhappen();
+
+
+
+// await clickandcheck();
+// console.log("after");
+// while (true){
+//   console.log(rego);
+//   if (rego){
+//     rego = document.getElementById("again");
+      
+//     console.log("bpom");
+//     rego.addEventListener("click", function () {
+//       console.log("addeventlistener");
+//       answer = [""];
+//       clickandcheck();
+//     });
+      
+//   }
+// }
 
 
 //button.addEventListener("click", function ()
