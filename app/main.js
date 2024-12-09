@@ -4,7 +4,7 @@ import "./style.css";
 const DOMSelectors = {
   container: document.querySelector(".flex-auto"),
 };
-
+let answer = [];
 async function generatequestion() {
   try {
     // returns a promise
@@ -23,6 +23,8 @@ async function generatequestion() {
 
       let guy = data.amiibo[randomnumber];
       console.log(guy.image);
+      answer.push(guy);
+
 
       DOMSelectors.container.insertAdjacentHTML(
         "beforeEnd",
@@ -65,6 +67,7 @@ async function generatequestion() {
           }
         
         });
+        firstone = possible[0];
         console.log(possible);
         // while (firstone.amiiboSeries === guy.amiiboSeries) {
         //   randombad = randombad + 1;
@@ -110,11 +113,12 @@ async function generatequestion() {
         console.log("running2");
         let possible2 = [];
         data.amiibo.forEach((amiibo) => {
-          if (amiibo.amiiboSeries !== guy.amiiboSeries) {
+          if (amiibo.amiiboSeries !== guy.amiiboSeries && amiibo.amiiboSeries !== firstone.amiiboSeries) {
             possible2.push(amiibo);
           }
         
         });
+        secondone = possible2[0];
         console.log(possible2);
       }
       //   console.log("running");
@@ -188,11 +192,12 @@ async function generatequestion() {
       ) {
         let possible3 = [];
         data.amiibo.forEach((amiibo) => {
-          if (amiibo.amiiboSeries !== guy.amiiboSeries) {
+          if (amiibo.amiiboSeries !== guy.amiiboSeries && amiibo.amiiboSeries !== secondone.amiiboSeries && amiibo.amiiboSeries !== firstone.amiiboSeries) {
             possible3.push(amiibo);
           }
         
         });
+        thirdone = possible3[0];
         console.log(possible3);
       }
       //   console.log("running3");
@@ -239,62 +244,7 @@ async function generatequestion() {
           `
         );
       }
-      DOMSelectors.buttons = document.querySelectorAll("button");
-      console.log("Button list below");
-      console.log(DOMSelectors.buttons);
-      // while (true) {
-      //   DOMSelectors.buttons.forEach((button) => {
-      //     button.addEventListener("click", function () {
-      //       console.log("Le Button unt clicked!");
-      //       let clickvalue = button.value;
-
-      //       if (clickvalue === guy.amiiboSeries) {
-      //         DOMSelectors.container.innerHTML = "";
-      //         DOMSelectors.container.insertAdjacentHTML(
-      //           "beforeEnd",
-      //           `
-      //         <div class = "temp">
-      //           <h2>CORRECT!</h2>
-              
-      //         </div>
       
-      //         `
-      //         );
-      //         setTimeout(() => {
-      //           DOMSelectors.container.insertAdjacentHTML(
-      //             "beforeEnd",
-      //             `
-      //             <button class="btn btn-outline btn-primary" id = "again">Another Question?</button>
-      //             `
-      //           );
-      //         }, 2500);
-      //         // console.log("Correct");
-      //       } else {
-      //         console.log("Doofus!");
-      //         DOMSelectors.container.innerHTML = "";
-      //         DOMSelectors.container.insertAdjacentHTML(
-      //           "beforeEnd",
-      //           `
-      //         <div class = "temp">
-      //           <h2>You utter BAFOON! It is a multiple choice question about silly little statues how in the name of all that is good in this world were you unable to use your brain to conjour up the simplest of answer! FOR SHAME!</h2>
-              
-      //         </div>
-      
-      //         `
-      //         );
-      //         setTimeout(() => {
-      //           DOMSelectors.container.insertAdjacentHTML(
-      //             "beforeEnd",
-      //             `
-      //             <button class="btn btn-outline btn-primary" id = "again">Get Your Aura Back?</button>
-      //             `
-      //           );
-      //         }, 2500);
-      //         console.log("Correct");
-      //       }
-      //     });
-      //   });
-      // }
     }
   } catch (error) {
     alert("hey I could not find that agent unc");
@@ -304,7 +254,9 @@ async function clickandcheck() {
   try {
     // returns a promise
     // await generatequestion();
+    await generatequestion();
     const response = await fetch("https://www.amiiboapi.com/api/amiibo/");
+    
     //guard clause
     if (response.status != 200) {
       throw new Error(response);
@@ -312,6 +264,70 @@ async function clickandcheck() {
       //convert promise to json
       let data = await response.json();
       console.log(data);
+
+      let guy = answer[0];
+      console.log(guy);
+      console.log("guy above");
+
+      DOMSelectors.buttons = document.querySelectorAll("button");
+      console.log("Button list below");
+      console.log(DOMSelectors.buttons);
+      
+      DOMSelectors.buttons.forEach((button) => {
+        button.addEventListener("click", function () {
+          console.log("Le Button unt clicked!");
+          let clickvalue = button.value;
+
+          if (clickvalue === guy.amiiboSeries) {
+            DOMSelectors.container.innerHTML = "";
+            DOMSelectors.container.insertAdjacentHTML(
+              "beforeEnd",
+              `
+              <div class = "temp">
+              <h2>CORRECT!</h2>
+            
+              </div>
+    
+              `
+            );
+            setTimeout(() => {
+              DOMSelectors.container.insertAdjacentHTML(
+                "beforeEnd",
+                `
+                <button class="btn btn-outline btn-primary" id = "again">Another Question?</button>
+                `
+              );
+            }, 2500);
+            console.log("Correct");
+          } else {
+            console.log("Doofus!");
+            DOMSelectors.container.innerHTML = "";
+            DOMSelectors.container.insertAdjacentHTML(
+              "beforeEnd",
+              `
+              <div class = "temp">
+              <h2>You utter BAFOON! It is a multiple choice question about silly little statues how in the name of all that is good in this world were you unable to use your brain to conjour up the simplest of answer! FOR SHAME!</h2>
+            
+              </div>
+    
+              `
+            );
+            setTimeout(() => {
+              DOMSelectors.container.insertAdjacentHTML(
+                "beforeEnd",
+                `
+                <button class="btn btn-outline btn-primary" id = "again">Get Your Aura Back?</button>
+                `
+              );
+            }, 2500);
+            console.log("Correct");
+          }
+        });
+      });
+      
+
+
+
     }
   } catch (error) {
     alert("hey I could not find that agent unc");
@@ -324,9 +340,25 @@ async function clickandcheck() {
 // if no then you suck
 // regenerate questions
 
-generatequestion();
+
+await clickandcheck();
+console.log("after");
+let rego = document.getElementById("again");
+console.log(rego);
+if (rego){
+  rego = document.getElementById("again");
+  while(true){
+    console.log("bpom");
+    rego.addEventListener("click", function () {
+      console.log("addeventlistener");
+      answer = [""];
+      clickandcheck();
+    });
+  }
+}
 
 
+//button.addEventListener("click", function ()
 //console.log("button list below");
 //console.log(DOMSelectors.buttons);
 
