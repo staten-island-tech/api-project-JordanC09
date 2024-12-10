@@ -39,3 +39,8 @@ image{
     height: 75px;
     width: auto;
 }
+
+.grade{
+    font-size: 100px;
+    color: rgb(3, 169, 36);
+}

@@ -5,6 +5,7 @@ const DOMSelectors = {
   container: document.querySelector(".flex-auto"),
 };
 let answer = [];
+console.log();
 async function generatequestion() {
   try {
     // returns a promise
@@ -284,7 +285,7 @@ async function clickandcheck() {
               "beforeEnd",
               `
               <div class = "temp">
-              <h2>CORRECT!</h2>
+              <h2 class = "grade">CORRECT!</h2>
             
               </div>
     
