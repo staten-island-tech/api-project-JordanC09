@@ -28,7 +28,6 @@ async function generatequestion() {
       console.log(guy.image);
       answer.push(guy);
 
-
       DOMSelectors.container.insertAdjacentHTML(
         "beforeEnd",
         `
@@ -68,7 +67,6 @@ async function generatequestion() {
           if (amiibo.amiiboSeries !== guy.amiiboSeries) {
             possible.push(amiibo);
           }
-        
         });
         firstone = possible[0];
         console.log(possible);
@@ -112,14 +110,16 @@ async function generatequestion() {
       if (
         secondone.amiiboSeries === guy.amiiboSeries ||
         secondone.amiiboSeries === firstone.amiiboSeries
-      ){
+      ) {
         console.log("running2");
         let possible2 = [];
         data.amiibo.forEach((amiibo) => {
-          if (amiibo.amiiboSeries !== guy.amiiboSeries && amiibo.amiiboSeries !== firstone.amiiboSeries) {
+          if (
+            amiibo.amiiboSeries !== guy.amiiboSeries &&
+            amiibo.amiiboSeries !== firstone.amiiboSeries
+          ) {
             possible2.push(amiibo);
           }
-        
         });
         secondone = possible2[0];
         console.log(possible2);
@@ -195,10 +195,13 @@ async function generatequestion() {
       ) {
         let possible3 = [];
         data.amiibo.forEach((amiibo) => {
-          if (amiibo.amiiboSeries !== guy.amiiboSeries && amiibo.amiiboSeries !== secondone.amiiboSeries && amiibo.amiiboSeries !== firstone.amiiboSeries) {
+          if (
+            amiibo.amiiboSeries !== guy.amiiboSeries &&
+            amiibo.amiiboSeries !== secondone.amiiboSeries &&
+            amiibo.amiiboSeries !== firstone.amiiboSeries
+          ) {
             possible3.push(amiibo);
           }
-        
         });
         thirdone = possible3[0];
         console.log(possible3);
@@ -247,7 +250,6 @@ async function generatequestion() {
           `
         );
       }
-      
     }
   } catch (error) {
     alert("hey I could not find that agent unc");
@@ -259,7 +261,7 @@ async function clickandcheck() {
     // await generatequestion();
     await generatequestion();
     const response = await fetch("https://www.amiiboapi.com/api/amiibo/");
-    
+
     //guard clause
     if (response.status != 200) {
       throw new Error(response);
@@ -275,7 +277,7 @@ async function clickandcheck() {
       DOMSelectors.buttons = document.querySelectorAll("button");
       console.log("Button list below");
       console.log(DOMSelectors.buttons);
-      
+
       DOMSelectors.buttons.forEach((button) => {
         button.addEventListener("click", function () {
           console.log("Le Button unt clicked!");
@@ -295,7 +297,9 @@ async function clickandcheck() {
     
               `
             );
-            document.querySelector(".current").innerHTML = `Currentscore: ${currentscore}`
+            document.querySelector(
+              ".current"
+            ).innerHTML = `Currentscore: ${currentscore}`;
             setTimeout(() => {
               DOMSelectors.container.insertAdjacentHTML(
                 "beforeEnd",
@@ -304,17 +308,19 @@ async function clickandcheck() {
                 `
               );
               rego = document.getElementById("again");
-              
-              waitforclick();  
-            }, 2500);
+
+              waitforclick();
+            }, 1500);
             console.log("Correct");
           } else {
             console.log("Doofus!");
             DOMSelectors.container.innerHTML = "";
-            if (currentscore > highscore){
+            if (currentscore > highscore) {
               highscore = currentscore;
             }
-            document.querySelector(".score").innerHTML = `HighScore: ${highscore}`
+            document.querySelector(
+              ".score"
+            ).innerHTML = `HighScore: ${highscore}`;
             currentscore = 0;
             DOMSelectors.container.insertAdjacentHTML(
               "beforeEnd",
@@ -336,20 +342,12 @@ async function clickandcheck() {
                 `
               );
               rego = document.getElementById("again");
-              waitforclick();  
-            }, 2500);
+              waitforclick();
+            }, 1500);
             console.log("Correct");
           }
-          
         });
-        
       });
-      
-      
-      
-
-
-
     }
   } catch (error) {
     alert("hey I could not find that agent unc");
@@ -362,31 +360,25 @@ async function clickandcheck() {
 // if no then you suck
 // regenerate questions
 
-
 function waitforclick() {
   if (rego) {
     rego.addEventListener("click", function () {
       console.log("rego");
-      answer = [];  
+      answer = [];
       rego.remove();
       document.querySelector(".temp").remove();
       stuffhappen();
-      
     });
   } else {
-    
-    setTimeout(waitforclick, 100);  
+    setTimeout(waitforclick, 100);
   }
 }
 
 async function stuffhappen() {
   await clickandcheck();
-  
 }
 
 stuffhappen();
-
-
 
 // await clickandcheck();
 // console.log("after");
@@ -394,17 +386,16 @@ stuffhappen();
 //   console.log(rego);
 //   if (rego){
 //     rego = document.getElementById("again");
-      
+
 //     console.log("bpom");
 //     rego.addEventListener("click", function () {
 //       console.log("addeventlistener");
 //       answer = [""];
 //       clickandcheck();
 //     });
-      
+
 //   }
 // }
-
 
 //button.addEventListener("click", function ()
 //console.log("button list below");
