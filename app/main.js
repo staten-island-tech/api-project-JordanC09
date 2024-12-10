@@ -5,6 +5,8 @@ const DOMSelectors = {
   container: document.querySelector(".flex-auto"),
 };
 let answer = [];
+let highscore = 0;
+let currentscore = 0;
 console.log();
 async function generatequestion() {
   try {
@@ -281,16 +283,19 @@ async function clickandcheck() {
 
           if (clickvalue === guy.amiiboSeries) {
             DOMSelectors.container.innerHTML = "";
+            currentscore += 1;
             DOMSelectors.container.insertAdjacentHTML(
               "beforeEnd",
               `
               <div class = "temp">
               <h2 class = "grade">CORRECT!</h2>
+              
             
               </div>
     
               `
             );
+            document.querySelector(".current").innerHTML = `Currentscore: ${currentscore}`
             setTimeout(() => {
               DOMSelectors.container.insertAdjacentHTML(
                 "beforeEnd",
@@ -299,22 +304,30 @@ async function clickandcheck() {
                 `
               );
               rego = document.getElementById("again");
+              
               waitforclick();  
             }, 2500);
             console.log("Correct");
           } else {
             console.log("Doofus!");
             DOMSelectors.container.innerHTML = "";
+            if (currentscore > highscore){
+              highscore = currentscore;
+            }
+            document.querySelector(".score").innerHTML = `HighScore: ${highscore}`
+            currentscore = 0;
             DOMSelectors.container.insertAdjacentHTML(
               "beforeEnd",
               `
               <div class = "temp">
-              <h2>You utter BAFOON! It is a multiple choice question about silly little statues how in the name of all that is good in this world were you unable to use your brain to conjour up the simplest of answer! FOR SHAME!</h2>
-            
+              <h2 class = "bafoon">You utter BAFOON! It is a multiple choice question about silly little statues how in the name of all that is good in this world were you unable to use your brain to conjour up the simplest of answer! FOR SHAME!</h2>
+              
+
               </div>
     
               `
             );
+            document.querySelector(".current").innerHTML = "Currentscore: 0";
             setTimeout(() => {
               DOMSelectors.container.insertAdjacentHTML(
                 "beforeEnd",
